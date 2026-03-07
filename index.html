@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$750 Rewards</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff4f4, #ffecec);
+  color: #222;
+  animation: fadeBody 0.5s ease;
+}
+
+@keyframes fadeBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 30px 22px;
+  box-shadow: 0 20px 55px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 21px;
+  color: #cc0000;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Progress */
+.progress-container {
+  background: #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.progress-bar {
+  width: 25%;
+  height: 6px;
+  background: linear-gradient(90deg, #ff4d4d, #cc0000);
+  transition: width 0.4s ease;
+}
+
+/* Steps */
+.steps {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.step {
+  padding: 8px 0;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.step.active {
+  color: #cc0000;
+  font-weight: 600;
+}
+
+/* Button */
+.cta-btn {
+  background: linear-gradient(90deg, #ff4d4d, #cc0000);
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 8px 20px rgba(204,0,0,0.3);
+  animation: pulse 2s infinite;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(204,0,0,0.4); }
+  70% { box-shadow: 0 0 0 14px rgba(204,0,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(204,0,0,0); }
+}
+
+/* Timer */
+.timer {
+  margin: 10px 0 18px;
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+
+/* Premium Live Feed */
+.live-feed-container {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.live-feed {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #333;
+  padding: 9px 16px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(204, 0, 0, 0.15);
+  box-shadow: 
+    0 4px 12px rgba(204,0,0,0.08),
+    0 0 0 1px rgba(255,255,255,0.4) inset;
+}
+
+.live-dot {
+  height: 8px;
+  width: 8px;
+  background-color: #cc0000;
+  border-radius: 50%;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Name animation */
+.name-transition {
+  display: inline-block;
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* FAQ */
+.faq {
+  margin-top: 35px;
+}
+
+.faq-title {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #cc0000;
+  text-align: center;
+}
+
+.faq-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.faq-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 12px;
+  color: #555;
+  transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 120px;
+  margin-top: 6px;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Disclaimer */
+.disclaimer {
+  margin-top: 18px;
+  padding: 12px 15px;
+  font-size: 9px;
+  line-height: 1.4;
+  color: #999;
+  background: transparent;
+  border: none;
+  text-align: center;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.75;
+}
+
+.disclaimer-title {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #aaa;
+  font-size: 9px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #f2f2f2;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #cc0000;
+  font-size: 11px;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-copy {
+  font-size: 10px;
+  color: #888;
+  margin-top: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" id="mainCard">
+
+<img class="logo" src="Costco-logo.png" alt="Costo Logo">
+
+
+<h1>🎁 Get a $750 Costco Gift Card</h1>
+<div class="subtitle">Available for US Residents</div>
+
+<div class="timer">
+⏳ Session expires in: <span id="countdown">05:00</span>
+</div>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="steps">
+  <div class="step">1. Click the button below</div>
+  <div class="step">2. Enter your email</div>
+  <div class="step">3. Complete 3-5 deals</div>
+  <div class="step">4. Receive your reward</div>
+</div>
+
+<button class="cta-btn" id="ctaButton">
+<b>CLAIM MY REWARD</b>
+</button>
+
+
+<div class="live-feed-container">
+  <div class="live-feed">
+    <span class="live-dot"></span>
+    <span id="liveName" class="name-transition">Olivia</span> joined the portal
+  </div>
+</div>
+
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+<h2 class="faq-title">Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <div class="faq-question">
+    How does this promotion work?
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    Participants complete partner promotional offers to qualify for available rewards.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question">
+    Who is eligible?
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    Available to eligible US residents meeting partner requirements.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question">
+    How long does it take?
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    Completion time varies depending on selected offers and verification.
+  </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact</a>
+    <a href="#">Terms & Conditions</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 Promotional Rewards Platform
+  </div>
+</div>
+
+<!-- Disclaimer (Moved Below Footer) -->
+<div class="disclaimer">
+<span class="disclaimer-title">Independent Promotional Notice</span>
+This page operates as an independent promotional platform and is not affiliated with or endorsed by any specific retail brand.
+Reward eligibility requires successful completion of partner promotional requirements.
+</div>
+</div>
+
+<script>
+
+// Highlight Step 1 on load
+var steps = document.querySelectorAll(".step");
+steps[0].classList.add("active");
+
+var time = 300;
+var countdown = document.getElementById("countdown");
+setInterval(function() {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  countdown.innerHTML =
+    (minutes < 10 ? "0" : "") + minutes + ":" +
+    (seconds < 10 ? "0" : "") + seconds;
+  if(time > 0) time--;
+}, 1000);
+
+// FAQ
+document.querySelectorAll(".faq-item").forEach(item => {
+  item.querySelector(".faq-question").addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
+});
+
+// Step interaction
+var progressBar = document.getElementById("progressBar");
+steps.forEach((step, index) => {
+  step.addEventListener("click", () => {
+    steps.forEach(s => s.classList.remove("active"));
+    step.classList.add("active");
+    progressBar.style.width = ((index + 1) / steps.length) * 100 + "%";
+  });
+});
+
+// Button redirect feedback
+document.getElementById("ctaButton").addEventListener("click", function() {
+  this.textContent = "Securing Your Reward...";
+  this.style.opacity = "0.8";
+  setTimeout(() => {
+    window.location.href = "https://giftclick.org/aff_c?offer_id=941&aff_id=139509";
+  }, 600);
+});
+
+// Live name rotation
+const names = ["Olivia","Amelia","Isla","Ava","Sophia","Mia","Grace","Lily"];
+let nameIndex = 0;
+
+setInterval(() => {
+  nameIndex = (nameIndex + 1) % names.length;
+  const nameElement = document.getElementById("liveName");
+  nameElement.classList.remove("name-transition");
+  void nameElement.offsetWidth;
+  nameElement.textContent = names[nameIndex];
+  nameElement.classList.add("name-transition");
+}, 4500);
+</script>
+
+</body>
+
+</html>
+
+
+
+
